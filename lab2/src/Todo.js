@@ -1,17 +1,21 @@
 import React from 'react'
 
-const Todo = ({text, completed}) => (
-  <a href='#' className='task-item'>
-    <span className='taskChecked'>
-      <span className={'glyphicon glyphicon-ok-circle'} />
-    </span>
-    <span className='task-inner'>{text}</span>
-  </a>
-)
+const Todo = ({text, completed, markCompleted}) => {
+  const style = completed ? 'glyphicon glyphicon-ok-circle' : 'glyphicon glyphicon-remove-circle'
+  return (
+    <a href='#' className='task-item' onClick={markCompleted}>
+      <span className='task-check'>
+        <span className={style} />
+      </span>
+      <span className='task-inner'>{text}</span>
+    </a>
+  )
+}
 
 Todo.propType = {
   text: React.PropTypes.string,
-  completed: React.PropTypes.bool
+  completed: React.PropTypes.bool,
+  markCompleted: React.PropTypes.func
 }
 
 export default Todo
