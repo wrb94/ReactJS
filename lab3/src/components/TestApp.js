@@ -8,11 +8,11 @@ export default React.createClass({
     children: React.PropTypes.any
   },
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('componentDidMount')
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       todos: [
         { id: 1, completed: false, text: 'Task 1', priority: false },
@@ -24,21 +24,21 @@ export default React.createClass({
 
   nextId: 4,
 
-  markCompleted (taskId) {
+  markCompleted(taskId) {
     const foundTodo = _.find(this.state.todos, todo => todo.id === taskId)
     foundTodo.completed = !foundTodo.completed
 
     this.setState({ todos: this.state.todos })
   },
 
-  markPriority (taskId) {
+  markPriority(taskId) {
     const foundTodo = _.find(this.state.todos, todo => todo.id === taskId)
     foundTodo.priority = !foundTodo.priority
 
     this.setState({ todos: this.state.todos })
   },
 
-  addTodo (text, priority = false) {
+  addTodo(text, priority = false) {
     const newTodo = {
       id: this.nextId++,
       completed: false,
@@ -50,13 +50,13 @@ export default React.createClass({
     this.setState({ todos: this.state.todos })
   },
 
-  sortTasks () {
+  sortTasks() {
     return this.state.todos.sort(function (a, b) {
       return (a.completed === b.completed) ? 0 : a.completed ? 1 : -1
     })
   },
 
-  render () {
+  render() {
     var activeTodoCount = this.state.todos.reduce(function (count, todo) {
       return todo.completed ? count : count + 1
     }, 0)
