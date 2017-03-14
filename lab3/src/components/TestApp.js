@@ -3,23 +3,15 @@ import React from 'react'
 import { Link } from 'react-router'
 import Footer from './Footer'
 
-export default React.createClass({
+const TestApp = React.createClass({
   propTypes: {
-    children: React.PropTypes.any
+    children: React.PropTypes.any,
+    todos: React.PropTypes.array,
+    markCompleted: React.PropTypes.func
   },
 
   componentDidMount() {
     console.log('componentDidMount')
-  },
-
-  getInitialState() {
-    return {
-      todos: [
-        { id: 1, completed: false, text: 'Task 1', priority: false },
-        { id: 2, completed: false, text: 'Task 2', priority: false },
-        { id: 3, completed: false, text: 'Task 3', priority: false }
-      ]
-    }
   },
 
   nextId: 4,
@@ -50,18 +42,12 @@ export default React.createClass({
     this.setState({ todos: this.state.todos })
   },
 
-  sortTasks() {
-    return this.state.todos.sort(function (a, b) {
-      return (a.completed === b.completed) ? 0 : a.completed ? 1 : -1
-    })
-  },
-
   render() {
-    var activeTodoCount = this.state.todos.reduce(function (count, todo) {
+    var activeTodoCount = this.props.todos.reduce(function (count, todo) {
       return todo.completed ? count : count + 1
     }, 0)
 
-    var doneTodoCount = this.state.todos.length - activeTodoCount
+    var doneTodoCount = this.props.todos.length - activeTodoCount
 
     return (
       <div className='mainApp'>
@@ -77,8 +63,8 @@ export default React.createClass({
           {React.cloneElement(
             this.props.children,
             {
-              todos: this.sortTasks(),
-              markCompleted: this.markCompleted,
+              todos: this.props.todos,
+              markCompleted: this.props.markCompleted,
               markPriority: this.markPriority,
               addTodo: this.addTodo
             })}
@@ -87,3 +73,5 @@ export default React.createClass({
       </div>)
   }
 })
+
+export default TestApp

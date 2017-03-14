@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import TestApp from './components/TestApp'
+// import TestApp from './components/TestApp'
+import DisplayTasks from './containers/DisplayTasks'
 import Calendar from './components/Calendar'
 import TasksPage from './pages/tasksPage'
 import PriorityPage from './pages/priorityPage'
@@ -12,7 +13,7 @@ import store from './store'
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path='/' component={TestApp} >
+      <Route path='/' component={DisplayTasks} >
         <IndexRoute component={TasksPage} />
         <Route path='/na' component={PriorityPage} />
       </Route>

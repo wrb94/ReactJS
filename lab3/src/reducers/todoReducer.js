@@ -1,6 +1,13 @@
 import { TOGGLE_TODO } from '../actions/actions'
 
-const todoReducer = (state = [], action) => {
+const initialState = {
+  todos: [
+    { id: 1, completed: true, text: 'Task 1', priority: false },
+    { id: 2, completed: false, text: 'Task 2', priority: false }
+  ]
+}
+
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_TODO:
       return Object.assign({}, state, {
