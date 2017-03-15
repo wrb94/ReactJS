@@ -28,7 +28,7 @@
     "eslint-plugin-react": "^6.9.0",
     "standard": "^8.6.0",
     "style-loader": "^0.13.1",
-    "webpack": "beta",
+    "webpack": "^2.2.0",
     "webpack-dev-server": "^1.16.2"
   }
 }

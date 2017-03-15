@@ -10,27 +10,27 @@ const TestApp = React.createClass({
     markCompleted: React.PropTypes.func
   },
 
-  componentDidMount() {
+  componentDidMount () {
     console.log('componentDidMount')
   },
 
   nextId: 4,
 
-  markCompleted(taskId) {
+  markCompleted (taskId) {
     const foundTodo = _.find(this.state.todos, todo => todo.id === taskId)
     foundTodo.completed = !foundTodo.completed
 
     this.setState({ todos: this.state.todos })
   },
 
-  markPriority(taskId) {
+  markPriority (taskId) {
     const foundTodo = _.find(this.state.todos, todo => todo.id === taskId)
     foundTodo.priority = !foundTodo.priority
 
     this.setState({ todos: this.state.todos })
   },
 
-  addTodo(text, priority = false) {
+  addTodo (text, priority = false) {
     const newTodo = {
       id: this.nextId++,
       completed: false,
@@ -42,7 +42,7 @@ const TestApp = React.createClass({
     this.setState({ todos: this.state.todos })
   },
 
-  render() {
+  render () {
     var activeTodoCount = this.props.todos.reduce(function (count, todo) {
       return todo.completed ? count : count + 1
     }, 0)

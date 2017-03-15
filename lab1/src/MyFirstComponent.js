@@ -2,6 +2,10 @@ import React from 'react'
 import Message from './Message'
 
 const Button = React.createClass({
+  propTypes: {
+    countUp: React.PropTypes.number
+  },
+
   render () {
     return (
       <div>
@@ -12,26 +16,26 @@ const Button = React.createClass({
 })
 
 const MyFirstComponent = React.createClass({
-  getInitialState() {
+  getInitialState () {
     return {
       value: 0,
       disabled: false
     }
   },
-  countUp(i) {
+  countUp (i) {
     console.log('click')
     this.setState({
       value: this.state.value + i
     }) // TODO function handler
   },
-  countDown(i) {
+  countDown (i) {
     console.log('down')
     this.setState({
       value: this.state.value - i
     })
   },
   // this.props  this.state.value || this.setState({value:1})
-  render() { // one DOM element on return
+  render () { // one DOM element on return
     return (
       <div>
         <Message message='Hello1' />
